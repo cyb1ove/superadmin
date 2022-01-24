@@ -1,0 +1,11 @@
+.UsersHead {
+  display: table-header-group;
+
+  &__row {
+    display: table-row;
+  }
+
+  &__cell {
+    display: table-cell;
+  }
+}
