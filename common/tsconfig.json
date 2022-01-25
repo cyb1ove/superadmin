@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es5", 
+    "module": "es2015",
+    "moduleResolution": "node",
+    "declaration": true, 
+    "declarationMap": true,
+    "rootDir": ".",   
+    "composite": true,    
+  },
+  "include": ["./**/*.ts", "./**/*.tsx"],
+  "references": [
+    {
+      "path": "../client",
+    },
+    {
+      "path": "../server",
+    }
+  ]
+}

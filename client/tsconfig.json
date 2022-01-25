@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es5",
     "lib": ["DOM", "ES6", "DOM.Iterable", "ScriptHost", "ES2016.Array.Include"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -9,14 +9,16 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "es2015",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "isolatedModules": false,
+    "jsx": "react-jsx",
+    "composite": true,
   },
-  "include": [
-    "components"
-, "index.tsx"  ]
+  "include": ["components", "api", "hooks", "index.tsx"],
+  "references": [
+    { "path": "../common" }
+  ]
+
 }

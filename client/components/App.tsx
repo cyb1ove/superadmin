@@ -1,25 +1,16 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable no-shadow */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import './App.css';
-import UsersTable from './UsersTable/UsersTable.tsx';
-import UsersRow from './UsersRow/UsersRow.tsx';
-import UsersHead from './UsersHead/UsersHead.tsx';
-import requests from '../api/requests.ts';
-
-enum InputNames {
-  name = 'name',
-  email = 'email',
-  data = 'data'
-}
-
-type User = {
-  [key in InputNames]: string
-} & {_id: string};
+import { User, editableFieldsNames, uneditableFieldsNames } from '../../common';
+import UsersTable from './UsersTable/UsersTable';
+import UsersRow from './UsersRow/UsersRow';
+import UsersHead from './UsersHead/UsersHead';
+import requests from '../api/requests';
 
 const App: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
+  const inputNames = [
+    ...Object.keys(editableFieldsNames),
+    ...Object.keys(uneditableFieldsNames),
+  ] as [keyof User];
 
   useEffect(() => {
     async function loadData() {
@@ -29,19 +20,20 @@ const App: React.FC = () => {
     }
 
     loadData();
+
+    return () => {};
   }, []);
 
   return (
     <UsersTable onSetUser={setUsers}>
-      <UsersHead names={['Name', 'Email', 'Date']} />
+      {users[0] && <UsersHead names={inputNames} />}
 
       {users.map((user, i) => (
         <UsersRow
           key={user._id}
           number={i}
-          id={user._id}
-          editableFields={[user.name, user.email]}
-          unEditableFields={[user.data]}
+          inputNames={inputNames}
+          currentUser={user}
           onSetUsers={setUsers}
         />
       ))}

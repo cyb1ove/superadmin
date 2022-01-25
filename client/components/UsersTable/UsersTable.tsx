@@ -1,19 +1,7 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable no-shadow */
-/* eslint-disable no-unused-vars */
 import React from 'react';
-import './UsersTable.scss';
-import requests from '../../api/requests.ts';
-
-enum InputNames {
-  name = 'name',
-  email = 'email',
-  data = 'data'
-}
-
-type User = {
-  [key in InputNames]: string
-} & {_id: string};
+import requests from '../../api/requests';
+import classes from './UsersTable.module.css';
+import { User } from '../../../common';
 
 type Props = {
   children: React.ReactNode,
@@ -38,8 +26,8 @@ const UsersTable: React.FC<Props> = ({ children, onSetUser }) => {
   }
 
   return (
-    <div className="UsersTable">
-      <div className="Users__caption">
+    <div className={classes.table}>
+      <div className={classes.caption}>
         <button
           type="button"
           onClick={handleAddRow}
