@@ -1,7 +1,8 @@
-import { User, UpdateUserDocument } from './../models/user.types';
-import { userSchema } from './../models/user'
+import { UpdateUserDocument } from '../models/user.types';
+import { userSchema } from '../models/user';
+import { ServerUser } from '../../../common';
 
-export function isUser(data: any): data is User {
+export function isUser(data: any): data is ServerUser {
   return typeof data.name === 'string' && typeof data.email === 'string';
 }
 

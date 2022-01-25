@@ -2,7 +2,7 @@
 import cors from 'cors';
 import express from 'express';
 import 'reflect-metadata';
-import userRouter from './src/routes/user'
+import userRouter from './src/routes/userRouter'
 import './src/config/mongo';
 
 const app: express.Application = express();

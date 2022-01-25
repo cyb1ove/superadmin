@@ -1,6 +1,9 @@
 import { Request, Response } from 'express';
-import UserModel from './../models/user';
+import moment from 'moment';
+import UserModel from '../models/user';
 import { isUser, isPartialUser } from '../utils/validation';
+import { User } from '../../../common';
+import { IUserDocument } from '../models/user.types';
 
 export default {
   onCreateUser: async (request: Request, response: Response): Promise<Response> => {

@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
-import { User, IUserDocument, IUserModel, UpdateUserDocument } from './user.types'
+import { IUserDocument, IUserModel, UpdateUserDocument } from './user.types';
+import { ServerUser } from '../../../common';
 
 export const userSchema = new Schema({
   name: {
@@ -16,20 +17,20 @@ export const userSchema = new Schema({
   },
 }, { versionKey: false });
 
-userSchema.statics.createUser = async function (userData: User): Promise<IUserDocument> {
-  const user = await this.create(userData);
+userSchema.statics.createUser = async function (userData: ServerUser): Promise<IUserDocument> {
+  const user: IUserDocument = await this.create(userData);
 
   return user;
 };
 
 userSchema.statics.getUsers = async function (): Promise<IUserDocument[]> {
-  const users = await this.find();
+  const users: IUserDocument[] = await this.find();
 
   return users;
 };
 
 userSchema.statics.getUserByName = async function (name: string): Promise<IUserDocument> {
-  const user = await this.findOne({ name });
+  const user: IUserDocument = await this.findOne({ name });
 
   return user;
 };

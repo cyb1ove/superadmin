@@ -5,9 +5,13 @@
       "esModuleInterop": true,
       "moduleResolution": "node",
       "outDir": "./build",
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "sourceMap": true
+      "sourceMap": true,
+      "composite": true,
    },
-   "lib": ["es2019"]
+   "lib": ["es2019"],
+   "references": [
+      {
+         "path": "../common",
+      }
+   ],
 }
